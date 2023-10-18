@@ -1,0 +1,21 @@
+#!/usr/bin/python3
+import os 
+import sys
+PACKAGE_NAME = 'PersonalFinanceCLI'
+LAMBDA_CODE_PATH = PACKAGE_NAME.join(os.getcwd().split(PACKAGE_NAME)[:-1])
+VENV_SITE_PACKAGES = LAMBDA_CODE_PATH + PACKAGE_NAME + "/env/lib/python3.9/site-packages"
+sys.path.append(LAMBDA_CODE_PATH)
+sys.path.append(VENV_SITE_PACKAGES)
+from PersonalFinanceCLI.db.UploadTransactionsFilesClient import UploadTransactionsFilesClient
+from PersonalFinanceCLI.processors.statement_processors.basic_processor import BasicProcessor
+from time import time 
+ts = time()
+fileKeys = UploadTransactionsFilesClient().get_newly_created_files()[:1]
+totalFiles = len(fileKeys)
+for i in range(0,totalFiles):
+    print("###############################%d/%d####################################"%(i+1,totalFiles))
+    times = time()
+    result = BasicProcessor(fileKeys[i]).process()
+    timee = time()
+    print("Completed (%d/%d) in %d Seconds --> %s Total Elapsed %d Seconds"%(i+1,totalFiles,timee-times,result,timee-ts))
+    print("###############################%d/%d####################################\n\n"%(i+1,totalFiles))
