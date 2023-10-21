@@ -1,11 +1,16 @@
+'''Date Values model'''
+from typing import List
 from PersonalFinanceCLI.models.BaseModel import BaseModel
+
+
 class DataValues(BaseModel):
-    def __init__(self):
-        self.fields = [
-            "values",
-            "count"
-        ]        
+    '''Date Values model'''
+
+    def __init__(self) -> None:
         super().__init__()
 
-    
-        
+    def get_fields(self) -> List[str]:
+        return [
+            "values",
+            "count"
+        ]

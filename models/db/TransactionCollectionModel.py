@@ -4,7 +4,7 @@ from PersonalFinanceCLI.models.db.Enums import TransactionType
 
 class TransactionCollectionModel(BaseDBModel):
     CollectionName = "transactions"
-    def __init__(self,no_transforms=False):
+    def __init__(self,no_transforms: bool =False):
         self.transforms = {
             "txnType" : lambda x:x._name_,
             "amount" : lambda x: float(x),
@@ -43,7 +43,7 @@ class TransactionCollectionModel(BaseDBModel):
         }
         self.printfunc = {
             "desc" : lambda x:x[:100],
-            "date" : lambda x:DateValue.DateToString(x)
+            "date" : lambda x:DateValue.date_to_string(x)
         }
         super().__init__(no_transforms)
     
@@ -77,7 +77,7 @@ class TransactionCollectionModel(BaseDBModel):
 
 
 
-    def setAlignment(self,table):
+    def set_alignment(self,table):
         table.align["Description"] = 'l'
     
     def GetActualAmount(self):

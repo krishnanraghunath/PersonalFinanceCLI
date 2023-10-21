@@ -1,6 +1,8 @@
+'''Account management argument model'''
 from PersonalFinanceCLI.models.arguments.BaseArgument import BaseArgument
 from PersonalFinanceCLI.models.db.Enums import EnumUtil, Banks,AccountType
 class AccountManageArgument(BaseArgument):
+    '''Account management argument model'''
 
     def __init__(self) -> None:
         self.verify = {

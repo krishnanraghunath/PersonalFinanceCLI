@@ -29,7 +29,7 @@ class HDFCBankAccountStatementProcessor(CSVStatementProcessor):
         '''Find all the transactions'''
         for line in self.lines:
             transaction = TransactionCollectionModel().ingest(line,HDFCBankAccountStatementProcessor.JSON_FIELD_MAP)
-            transaction.date(DateValue.DDMMYYToTimestamp(transaction.Getdate()))
+            transaction.date(DateValue.ddmmyy_to_timestamp(transaction.Getdate()))
             transaction.src(self.accountInfo.GetaccountNumber())
             transaction.dest("EXTERNAL")
             transaction = TransactionCollectionModel().ingest(~transaction)

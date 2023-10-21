@@ -4,11 +4,13 @@ from PersonalFinanceCLI.models.db.TransactionCollectionModel import TransactionC
 from PersonalFinanceCLI.models.db.Enums import TransactionType
 from re import compile 
 
-'''
-There are no DBs/Collection Associated with this one. As of now we are just using it for
-displaying the aggragated cashflow for instruments using this one
-'''
+
 class TotalCashFlow(BaseDBModel):
+    '''
+    There are no DBs/Collection Associated with this one. As of now we are just using it for
+    displaying the aggragated cashflow for instruments using this one
+    '''
+    @staticmethod
     def DefaultTotalCashFlow(identifier = None):
         return TotalCashFlow().identifier(identifier).credittxns(0).debittxns(0).txns(0)\
             .ldate(100000000000000000).rdate(0).credit(0).debit(0).days(0).net(0).day({}).month({}).year({})
@@ -53,16 +55,16 @@ class TotalCashFlow(BaseDBModel):
             "debittxns" : "Debits",
             "txns" : "Count"
         }
-        self.printfunc = {
-            "ldate" : lambda x:DateValue.DateToString(x),
-            "rdate" : lambda x:DateValue.DateToString(x),
+        self.print_function = {
+            "ldate" : DateValue.date_to_string,
+            "rdate" : DateValue.date_to_string,
             "debit" : lambda x: "%.2f"%x,
             "credit" : lambda x: "%.2f"%x,
             "net": lambda x: "%.2f"%x
         }
         super().__init__(no_transforms)
     
-    def setAlignment(self,table):
+    def set_alignment(self,table):
         table.align["Summary Name"] = 'l'
      
 
@@ -101,7 +103,7 @@ class TotalCashFlow(BaseDBModel):
         if not aggregate:
             return 
         
-        (dayK,day,monthK,month,yearK,year) = compile("^((\d\d?)-((\d\d?)-((\d{4}))))$").search( DateValue.DateToString(transaction.Getdate())).groups()
+        (dayK,day,monthK,month,yearK,year) = compile("^((\d\d?)-((\d\d?)-((\d{4}))))$").search( DateValue.date_to_string(transaction.Getdate())).groups()
 
         totalCashFlow = lambda x,y,z: TotalCashFlow.DefaultTotalCashFlow().day(z).month(y).year(x)
         identifer = self.Getidentifier()

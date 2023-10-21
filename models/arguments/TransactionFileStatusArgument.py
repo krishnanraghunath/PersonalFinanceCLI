@@ -4,7 +4,7 @@ class TransactionFileStatusArgument(BaseArgument):
 
     def __init__(self) -> None:
         self.verify = {
-            "txnStatus" : lambda x:EnumUtil.valueToEnumText(x,TransactionFileProcessingStatus)
+            "txnStatus" : lambda x:EnumUtil.convert_enum_value_to_text(x,TransactionFileProcessingStatus)
         }
         self.fields = [
             "txnStatus",

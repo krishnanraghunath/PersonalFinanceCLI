@@ -1,20 +1,28 @@
+'''Collection datatype model for AccountCollection'''
+from typing import Any, Dict, Callable, List
 from PersonalFinanceCLI.models.db.BaseDBModel import BaseDBModel
-from PersonalFinanceCLI.models.db.Enums import AccountType,Banks,EnumUtil
+from PersonalFinanceCLI.models.db.Enums import AccountType, Banks, EnumUtil
+
+
 class AccountCollectionModel(BaseDBModel):
+    '''Collection datatype model for AccountCollection'''
     CollectionName = "accounts"
-    def __init__(self):
-        self.transforms = {
-            "accountBank" : lambda x:EnumUtil.valueToEnumText(x,Banks),
-            "accountType" : lambda x:EnumUtil.valueToEnumText(x,AccountType)
+
+    def get_fields(self) -> List[str]:
+        return [
+            "account_number",
+            "account_name",
+            "account_bank",
+            "account_type",
+        ]
+
+    def get_hash_fields(self) -> List[str]:
+        return [
+            "account_number"
+        ]
+
+    def get_data_transform_map(self) -> Dict[str, Callable[[str], Any]]:
+        return {
+            "account_bank": lambda x: EnumUtil.convert_enum_value_to_text(x, Banks),
+            "account_type": lambda x: EnumUtil.convert_enum_value_to_text(x, AccountType)
         }
-        self.fields = [
-            "accountNumber",
-            "accountName",
-            "accountBank",
-            "accountType",
-        ]
-        self.hashfields = [
-            "accountNumber"
-        ]
-        super().__init__()
-    
