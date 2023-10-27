@@ -1,6 +1,0 @@
-pymongo
-prettytable
-filetype
-pdfminer
-pep8
-pylint

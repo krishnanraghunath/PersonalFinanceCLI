@@ -1,0 +1,6 @@
+pymongo
+prettytable
+filetype
+pdfminer.six=20221105
+pep8
+pylint

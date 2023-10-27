@@ -1,0 +1,153 @@
+{
+    "regex" : {
+        "amount" : {
+            "start" :  [
+                "International Spends$",
+                "Transaction Details",
+                "^State Code: \\d{2}$"
+                ],
+
+            "stop" : [
+                "Earned",
+                "^No. of Installments$",
+                "Page (\\d{1}) of (\\d{1})",
+                "^For ICICI Bank Limited"],
+
+            "match" : [],
+
+            "no_match" :[
+                "^(\\d{10})$",
+                "^([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+).[0-9][0-9] USD$"]
+        },
+
+        "date" : {
+            "start" : [
+                "^Amount \\(in`\\)$",
+                "^www.icicibank.com/offers$",
+                "^Transaction Details$",
+                "^State Code: \\d{2}$",
+                "^CIN No. L65190GJ1994PLC021012$"
+                ],
+
+            "stop" : [
+                "^For exclusive$",
+                "^EARNINGS$",
+                "^Page \\d of \\d$",
+                "^EMI / PERSONAL LOAN ON CREDIT CARDS$",
+                "^Transaction/$",
+                "^For ICICI Bank Limited",
+                "^For any query"
+                ],
+
+            "match" : [],
+
+            "no_match" : []
+        },
+
+        "description" : {
+            "start" : [
+                "^Amount \\(in`\\)$",
+                "^www.icicibank.com/offers$",
+                "^Transaction Details$",
+                "^State Code: \\d{2}$",
+                "^CIN No. L65190GJ1994PLC021012$"
+                ],
+
+            "stop" : [
+                "^For exclusive$",
+                "^EARNINGS$",
+                "^SPENDS OVERVIEW$",
+                "^Page \\d of \\d$",
+                "^EMI / PERSONAL LOAN ON CREDIT CARDS$",
+                "^Transaction/$",
+                "^For ICICI Bank Limited",
+                "^For any query"
+                ],
+
+            "match" : [],
+
+            "no_match" :       [
+                "^# International Spends$",
+                "^[A-Z]{3}[1-2]\\d$",
+                "^Apparel/Grocery-\\d\\d?%",
+                "^Fuel-\\d\\d?%$",
+                "^Others-\\d\\d?%$", 
+                "^Dining-\\d\\d?%$", 
+                "^Travel-\\d\\d?%$",
+                "^T&C apply$",
+                "^\\d{4}X{8}\\d{4}$", 
+                "^Intl.#", 
+                "^Amount \\(in`\\)$",
+                "^amount$", 
+                "60 MYR", 
+                "^Reward$", 
+                "^Points$", 
+                "^Reward Points$",
+                "^SerNo.$",
+                "^Transaction Details$",
+                "^Date$",
+                "^WWW.ZOMATO.CO IN$"
+                ]
+        },
+
+        "account" : {
+            "start" : [
+                "^Amount \\(in`\\)$",
+                "^www.icicibank.com/offers$",
+                "^Transaction Details$",
+                "^State Code: \\d{2}$",
+                "^CIN No. L65190GJ1994PLC021012$"
+                ],
+
+            "stop" : [
+                "^For exclusive$",
+                "^EARNINGS$",
+                "^Page \\d of \\d$",
+                "^EMI / PERSONAL LOAN ON CREDIT CARDS$",
+                "^Transaction/$",
+                "^For ICICI Bank Limited",
+                "^For any query"
+                ],
+
+            "match" :["^\\d{4}X{8}\\d{4}$"],
+
+            "no_match" : []
+        },
+
+        "serial" : {
+
+            "start" : [
+                "^Amount \\(in`\\)$",
+                "^Transaction Details$"
+            ],
+
+            "stop" : [
+                "Page (\\d{1}) of (\\d{1})"
+            ],
+
+            "match" : [
+                "^(\\d{10})$"
+            ],
+
+            "no_match" : [] 
+        },
+
+        "statement" : {
+
+            "start" : [
+                "^Total Amount due$"
+            ],
+
+            "stop" : [
+                "^Minimum Amount due$"
+            ],
+
+            "match" : [
+                "^`([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+).[0-9][0-9]"
+            ],
+
+            "no_match" : []
+        }
+
+    }
+}

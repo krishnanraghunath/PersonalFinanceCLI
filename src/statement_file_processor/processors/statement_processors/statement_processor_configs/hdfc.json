@@ -1,0 +1,99 @@
+{
+    "regex" : {
+        "amount" : {
+            "start" :  [
+                "^Amount \\(in Rs.\\)"
+                ],
+
+            "stop" : [
+                "Page [\\d] of [\\d]",
+                "SMS EMI",
+                "^Opening Balance$"
+            ],
+
+            "match" : [],
+
+            "no_match" :[]
+        },
+
+        "date" : {
+            "start" : [],
+
+            "stop" : [
+                "^Transaction details from", 
+                "^Opening Balance$"
+            ],
+
+            "match" : [],
+
+            "no_match" : []
+        },
+
+        "description" : {
+            "start" : [
+                "^Domestic Transactions$" ,
+                "^Transaction Description$"
+                ],
+
+            "stop" : [
+                "^Opening Balance$",
+                "^Page \\d of \\d$"
+                ],
+
+            "match" : [],
+
+            "no_match" :       [
+                "^HARIKRISHNAN$",
+                "^(\\d{2})/(\\d{2})/(\\d{4})$", 
+                "^(\\d{2})/(\\d{2})/(\\d{4}) (\\d{2}):(\\d{2}):(\\d{2})$",
+                "^\\-?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+).[0-9][0-9]$",
+                "^\\-?(\\d,)?(\\d\\d?,)?(\\d?\\d?\\d).\\d\\d Cr$",
+                
+                "^(MYR|USD)\\s+(\\d+)?.\\d{2}$",
+                "^Feature Reward$",
+                "^Reward Points Summary$",
+                "^null$",
+                "^Points$",
+                "^Amount \\(in Rs.\\)$",
+                "^Visa Regalia Credit Card Statement$",
+                "^VISA Regalia Credit Card Statement$",
+                "^Date$",
+                "^Transaction Description$",
+                "^Domestic Transactions$" ,
+                "^International Transactions$"
+
+                ]
+        },
+
+        "account" : {
+            "start" : [
+                "^Statement for HDFC Bank Credit Card$"
+                ],
+
+            "stop" : [
+                "^Payment Due Date$"
+                ],
+
+            "match" :["Card No:"],
+
+            "no_match" : []
+        },
+
+        "statement" : {
+
+            "start" : [
+                "^Opening$"
+            ],
+
+            "stop" : [
+                "^Overlimit$"
+            ],
+
+            "match" : [
+            ],
+
+            "no_match" : [] 
+        }
+
+    }
+}
